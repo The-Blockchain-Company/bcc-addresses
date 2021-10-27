@@ -1,0 +1,95 @@
+name:                bcc-addresses
+version:             3.5.0
+github:              The-Blockchain-Company/bcc-addresses
+license:             Apache-2.0
+author:              The-Blockchain-Company
+maintainer:          operations@bcccoin.io
+copyright:           2021 The-Blockchain-Company
+synopsis:            Library utilities for mnemonic generation and address derivation.
+category:            Bcc
+
+description: |
+  Please see the README on GitHub at <https://github.com/The-Blockchain-Company/bcc-addresses>
+
+dependencies:
+- base >= 4.7 && < 5
+
+flags:
+  release:
+    description: Compile executables for a release.
+    default: False
+    manual: True
+
+library:
+  source-dirs: lib
+  ghc-options:
+  - -Wall
+  - -Wcompat
+  - -fwarn-redundant-constraints
+  when:
+  - condition: flag(release)
+    ghc-options:
+    - -Werror
+  - condition: impl(ghcjs) || os(ghcjs)
+    dependencies:
+    # TODO remove once js-sources from bcc-addresses-jsbits works correctly
+    - bcc-addresses-jsbits
+  default-extensions:
+  - NoImplicitPrelude
+  dependencies:
+  - aeson
+  - base58-bytestring
+  - basement
+  - bech32
+  - bech32-th
+  - binary
+  - bytestring
+  - bcc-crypto
+  - cborg
+  - containers
+  - cryptonite
+  - deepseq
+  - digest
+  - either
+  - exceptions
+  - extra
+  - fmt
+  - hashable
+  - memory
+  - text
+  - unordered-containers
+
+tests:
+  unit:
+    source-dirs: test
+    main: Main.hs
+    default-extensions:
+    - NoImplicitPrelude
+    ghc-options:
+    - -Wall
+    - -Wcompat
+    - -fwarn-redundant-constraints
+    - -threaded
+    - -rtsopts
+    - -with-rtsopts=-N
+    when:
+    - condition: flag(release)
+      ghc-options:
+      - -Werror
+    build-tools:
+    - hspec-discover
+    dependencies:
+    - aeson
+    - bech32
+    - binary
+    - bytestring
+    - bcc-addresses
+    - bcc-crypto
+    - containers
+    - hspec
+    - memory
+    - QuickCheck >= 2.14.2
+    - text
+    - hspec-golden >= 0.1.0.3 && < 0.2
+    - pretty-simple
+    - aeson-pretty

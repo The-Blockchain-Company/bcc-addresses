@@ -1,0 +1,30 @@
+name:                bcc-addresses-jsbits
+version:             3.6.0
+github:              The-Blockchain-Company/bcc-addresses
+license:             Apache-2.0
+author:              The-Blockchain-Company
+maintainer:          operations@bcccoin.io
+copyright:           2021 The-Blockchain-Company
+synopsis:            Javascript code for ghcjs build of bcc-addresses.
+category:            Bcc
+
+description: |
+  This package supports ghcjs compilation of bcc-addresses with
+  Javascript wrappers and Emscripten builds of the cryptonite C
+  sources.
+
+dependencies:
+- base >= 4.7 && < 5
+
+library:
+  source-dirs: lib
+  default-extensions:
+  - NoImplicitPrelude
+  when:
+  - condition: 'impl(ghcjs) || os(ghcjs)'
+    # This file is not included in the git repo and should be built
+    # manually, e.g. by running ./emscripten/build.sh, or via the nix build.
+    ghc-options: jsbits/bcc-crypto.js
+    js-sources: jsbits/bcc-crypto.js
+  - condition: false
+    other-modules: Paths_bcc_addresses_jsbits

@@ -1,0 +1,169 @@
+cabal-version: 1.12
+
+-- This file has been generated from package.yaml by hpack version 0.34.4.
+--
+-- see: https://github.com/sol/hpack
+--
+-- hash: 203e6beb608e6901e5c3ad92fe45a3e4a5ed0a9212c7ed2d214ab40fb10e506f
+
+name:           bcc-addresses-cli
+version:        3.5.0
+synopsis:       Utils for constructing a command-line on top of bcc-addresses.
+description:    Please see the README on GitHub at <https://github.com/The-Blockchain-Company/bcc-addresses>
+category:       Bcc
+homepage:       https://github.com/The-Blockchain-Company/bcc-addresses#readme
+bug-reports:    https://github.com/The-Blockchain-Company/bcc-addresses/issues
+author:         The-Blockchain-Company
+maintainer:     operations@bcccoin.io
+copyright:      2021 The-Blockchain-Company
+license:        Apache-2.0
+build-type:     Simple
+extra-source-files:
+    ./schemas/address-inspect.json
+
+source-repository head
+  type: git
+  location: https://github.com/The-Blockchain-Company/bcc-addresses
+
+flag release
+  description: Compile executables for a release.
+  manual: True
+  default: False
+
+library
+  exposed-modules:
+      Command
+      Command.Address
+      Command.Address.Bootstrap
+      Command.Address.Delegation
+      Command.Address.Inspect
+      Command.Address.Payment
+      Command.Address.Pointer
+      Command.Address.Reward
+      Command.Key
+      Command.Key.Child
+      Command.Key.FromRecoveryPhrase
+      Command.Key.Hash
+      Command.Key.Inspect
+      Command.Key.Public
+      Command.RecoveryPhrase
+      Command.RecoveryPhrase.Generate
+      Command.Script
+      Command.Script.Hash
+      Command.Script.Preimage
+      Command.Script.Validation
+      Command.Version
+      Options.Applicative.Credential
+      Options.Applicative.Derivation
+      Options.Applicative.Discrimination
+      Options.Applicative.MnemonicSize
+      Options.Applicative.Public
+      Options.Applicative.Script
+      Options.Applicative.Style
+      System.Git.TH
+      System.IO.Extra
+  other-modules:
+      Paths_bcc_addresses_cli
+  hs-source-dirs:
+      lib
+  default-extensions:
+      NoImplicitPrelude
+  ghc-options: -Wall -Wcompat -fwarn-redundant-constraints
+  build-depends:
+      aeson
+    , aeson-pretty
+    , ansi-terminal
+    , base >=4.7 && <5
+    , bech32
+    , bytestring
+    , bcc-addresses
+    , bcc-crypto
+    , code-page
+    , extra
+    , fmt
+    , mtl >=2.2.2 && <2.3
+    , optparse-applicative
+    , process
+    , safe
+    , template-haskell
+    , text
+  if flag(release)
+    ghc-options: -Werror
+  default-language: Haskell2010
+
+executable bcc-address
+  main-is: Main.hs
+  other-modules:
+      Paths_bcc_addresses_cli
+  hs-source-dirs:
+      exe
+  ghc-options: -Wall -Wcompat -fwarn-redundant-constraints -threaded -rtsopts -with-rtsopts=-N
+  build-depends:
+      base >=4.7 && <5
+    , bcc-addresses
+    , bcc-addresses-cli
+  if flag(release) && !impl(ghcjs) && !os(ghcjs)
+    ghc-options: -Werror -static -O2
+    cc-options: -static
+    ld-options: -static -pthread
+  default-language: Haskell2010
+
+test-suite unit
+  type: exitcode-stdio-1.0
+  main-is: Main.hs
+  other-modules:
+      AutoDiscover
+      Command.Address.BootstrapSpec
+      Command.Address.DelegationSpec
+      Command.Address.InspectSpec
+      Command.Address.PaymentSpec
+      Command.Address.PointerSpec
+      Command.Address.RewardSpec
+      Command.Key.ChildSpec
+      Command.Key.FromRecoveryPhraseSpec
+      Command.Key.HashSpec
+      Command.Key.InspectSpec
+      Command.Key.PublicSpec
+      Command.KeySpec
+      Command.RecoveryPhrase.GenerateSpec
+      Command.RecoveryPhraseSpec
+      Command.Script.HashSpec
+      Command.Script.PreimageSpec
+      Command.Script.ValidationSpec
+      CommandSpec
+      Options.Applicative.DerivationSpec
+      System.IO.ExtraSpec
+      Test.Arbitrary
+      Test.Utils
+      Paths_bcc_addresses_cli
+  hs-source-dirs:
+      test
+  default-extensions:
+      NoImplicitPrelude
+  ghc-options: -Wall -Wcompat -fwarn-redundant-constraints -threaded -rtsopts -with-rtsopts=-N
+  build-tools:
+      bcc-address
+  build-tool-depends:
+      hspec-discover:hspec-discover
+  build-depends:
+      QuickCheck >=2.14.2
+    , aeson
+    , base >=4.7 && <5
+    , bech32
+    , bech32-th
+    , bytestring
+    , bcc-addresses
+    , bcc-addresses-cli
+    , containers
+    , hspec
+    , process
+    , string-interpolate
+    , temporary
+    , text
+  if flag(release)
+    ghc-options: -Werror
+  if !(impl(ghcjs) || os(ghcjs))
+    cpp-options: -DHJSONSCHEMA
+    build-depends:
+        hjsonschema >=1.10.0
+  default-language: Haskell2010

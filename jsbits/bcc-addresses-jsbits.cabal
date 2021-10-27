@@ -1,0 +1,41 @@
+cabal-version: 1.12
+
+-- This file has been generated from package.yaml by hpack version 0.34.4.
+--
+-- see: https://github.com/sol/hpack
+--
+-- hash: 3712985859f942f21fd3809cd40779749c19ef8786b4543e3b44c99c495cae48
+
+name:           bcc-addresses-jsbits
+version:        3.6.0
+synopsis:       Javascript code for ghcjs build of bcc-addresses.
+description:    This package supports ghcjs compilation of bcc-addresses with
+                Javascript wrappers and Emscripten builds of the cryptonite C
+                sources.
+category:       Bcc
+homepage:       https://github.com/The-Blockchain-Company/bcc-addresses#readme
+bug-reports:    https://github.com/The-Blockchain-Company/bcc-addresses/issues
+author:         The-Blockchain-Company
+maintainer:     operations@bcccoin.io
+copyright:      2021 The-Blockchain-Company
+license:        Apache-2.0
+build-type:     Simple
+
+source-repository head
+  type: git
+  location: https://github.com/The-Blockchain-Company/bcc-addresses
+
+library
+  exposed-modules:
+      Bcc.Address.Jsbits
+  hs-source-dirs:
+      lib
+  default-extensions:
+      NoImplicitPrelude
+  build-depends:
+      base >=4.7 && <5
+  if impl(ghcjs) || os(ghcjs)
+    ghc-options: jsbits/bcc-crypto.js
+    js-sources:
+        jsbits/bcc-crypto.js
+  default-language: Haskell2010

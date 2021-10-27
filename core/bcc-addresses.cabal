@@ -1,0 +1,129 @@
+cabal-version: 1.12
+
+-- This file has been generated from package.yaml by hpack version 0.34.4.
+--
+-- see: https://github.com/sol/hpack
+--
+-- hash: 95190a9cc4e813af608729ea8aaa3808b3d3a58ade4465387bca07403bd04b36
+
+name:           bcc-addresses
+version:        3.5.0
+synopsis:       Library utilities for mnemonic generation and address derivation.
+description:    Please see the README on GitHub at <https://github.com/The-Blockchain-Company/bcc-addresses>
+category:       Bcc
+homepage:       https://github.com/The-Blockchain-Company/bcc-addresses#readme
+bug-reports:    https://github.com/The-Blockchain-Company/bcc-addresses/issues
+author:         The-Blockchain-Company
+maintainer:     operations@bcccoin.io
+copyright:      2021 The-Blockchain-Company
+license:        Apache-2.0
+build-type:     Simple
+
+source-repository head
+  type: git
+  location: https://github.com/The-Blockchain-Company/bcc-addresses
+
+flag release
+  description: Compile executables for a release.
+  manual: True
+  default: False
+
+library
+  exposed-modules:
+      Bcc.Address
+      Bcc.Address.Compat
+      Bcc.Address.Derivation
+      Bcc.Address.Internal
+      Bcc.Address.Script
+      Bcc.Address.Script.Parser
+      Bcc.Address.Style.Cole
+      Bcc.Address.Style.Icarus
+      Bcc.Address.Style.Shared
+      Bcc.Address.Style.Sophie
+      Bcc.Codec.Bech32.Prefixes
+      Bcc.Codec.Cbor
+      Bcc.Mnemonic
+      Codec.Binary.Encoding
+      Data.Word7
+  other-modules:
+      Paths_bcc_addresses
+  hs-source-dirs:
+      lib
+  default-extensions:
+      NoImplicitPrelude
+  ghc-options: -Wall -Wcompat -fwarn-redundant-constraints
+  build-depends:
+      aeson
+    , base >=4.7 && <5
+    , base58-bytestring
+    , basement
+    , bech32
+    , bech32-th
+    , binary
+    , bytestring
+    , bcc-crypto
+    , cborg
+    , containers
+    , cryptonite
+    , deepseq
+    , digest
+    , either
+    , exceptions
+    , extra
+    , fmt
+    , hashable
+    , memory
+    , text
+    , unordered-containers
+  if flag(release)
+    ghc-options: -Werror
+  if impl(ghcjs) || os(ghcjs)
+    build-depends:
+        bcc-addresses-jsbits
+  default-language: Haskell2010
+
+test-suite unit
+  type: exitcode-stdio-1.0
+  main-is: Main.hs
+  other-modules:
+      AutoDiscover
+      Bcc.Address.DerivationSpec
+      Bcc.Address.Script.ParserSpec
+      Bcc.Address.ScriptSpec
+      Bcc.Address.Style.ColeSpec
+      Bcc.Address.Style.IcarusSpec
+      Bcc.Address.Style.SharedSpec
+      Bcc.Address.Style.SophieSpec
+      Bcc.AddressSpec
+      Bcc.Codec.CborSpec
+      Bcc.MnemonicSpec
+      Codec.Binary.EncodingSpec
+      Data.Word7Spec
+      Test.Arbitrary
+      Paths_bcc_addresses
+  hs-source-dirs:
+      test
+  default-extensions:
+      NoImplicitPrelude
+  ghc-options: -Wall -Wcompat -fwarn-redundant-constraints -threaded -rtsopts -with-rtsopts=-N
+  build-tool-depends:
+      hspec-discover:hspec-discover
+  build-depends:
+      QuickCheck >=2.14.2
+    , aeson
+    , aeson-pretty
+    , base >=4.7 && <5
+    , bech32
+    , binary
+    , bytestring
+    , bcc-addresses
+    , bcc-crypto
+    , containers
+    , hspec
+    , hspec-golden >=0.1.0.3 && <0.2
+    , memory
+    , pretty-simple
+    , text
+  if flag(release)
+    ghc-options: -Werror
+  default-language: Haskell2010

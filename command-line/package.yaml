@@ -1,0 +1,116 @@
+name:                bcc-addresses-cli
+version:             3.5.0
+github:              The-Blockchain-Company/bcc-addresses
+license:             Apache-2.0
+author:              The-Blockchain-Company
+maintainer:          operations@bcccoin.io
+copyright:           2021 The-Blockchain-Company
+synopsis:            Utils for constructing a command-line on top of bcc-addresses.
+category:            Bcc
+
+description: |
+  Please see the README on GitHub at <https://github.com/The-Blockchain-Company/bcc-addresses>
+
+extra-source-files:
+  ./schemas/address-inspect.json
+
+dependencies:
+- base >= 4.7 && < 5
+
+flags:
+  release:
+    description: Compile executables for a release.
+    default: False
+    manual: True
+
+library:
+  source-dirs: lib
+  ghc-options:
+  - -Wall
+  - -Wcompat
+  - -fwarn-redundant-constraints
+  when:
+  - condition: flag(release)
+    ghc-options:
+    - -Werror
+  default-extensions:
+  - NoImplicitPrelude
+  dependencies:
+  - aeson
+  - aeson-pretty
+  - ansi-terminal
+  - bech32
+  - bytestring
+  - bcc-addresses
+  - bcc-crypto
+  - code-page
+  - extra
+  - fmt
+  - mtl >= 2.2.2 && < 2.3
+  - optparse-applicative
+  - process
+  - safe
+  - template-haskell
+  - text
+
+executables:
+  bcc-address:
+    main: Main.hs
+    source-dirs: exe
+    ghc-options:
+    - -Wall
+    - -Wcompat
+    - -fwarn-redundant-constraints
+    - -threaded
+    - -rtsopts
+    - -with-rtsopts=-N
+    dependencies:
+    - bcc-addresses
+    - bcc-addresses-cli
+    when:
+    - condition: 'flag(release) && !impl(ghcjs) && !os(ghcjs)'
+      ghc-options:
+      - -Werror
+      - -static
+      - -O2
+      cc-options: -static
+      ld-options: -static -pthread
+
+tests:
+  unit:
+    source-dirs: test
+    main: Main.hs
+    default-extensions:
+    - NoImplicitPrelude
+    ghc-options:
+    - -Wall
+    - -Wcompat
+    - -fwarn-redundant-constraints
+    - -threaded
+    - -rtsopts
+    - -with-rtsopts=-N
+    when:
+    - condition: flag(release)
+      ghc-options:
+      - -Werror
+    - condition: '!(impl(ghcjs) || os(ghcjs))'
+      cpp-options: -DHJSONSCHEMA
+      dependencies:
+      - hjsonschema >= 1.10.0
+    build-tools:
+    - hspec-discover
+    - bcc-address
+    dependencies:
+    - aeson
+    - bech32
+    - bech32-th
+    - bytestring
+    - bcc-addresses
+    - bcc-addresses-cli
+    - containers
+    - hspec
+    - process
+    - QuickCheck >= 2.14.2
+    - string-interpolate
+    - temporary
+    - text

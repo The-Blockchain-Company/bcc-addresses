@@ -1,0 +1,6 @@
+#!/usr/bin/env node
+
+// Copyright © 2021 The-Blockchain-Company
+// License: Apache-2.0
+
+require('../dist/index').cli(process.argv);

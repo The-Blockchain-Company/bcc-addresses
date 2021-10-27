@@ -1,0 +1,34 @@
+resolver: lts-18.9
+compiler: ghc-8.10.5
+
+packages:
+- core
+- command-line
+- jsbits
+
+extra-deps:
+- base58-bytestring-0.1.0
+- bech32-1.1.1
+- bech32-th-1.1.1
+- git: https://github.com/The-Blockchain-Company/bcc-crypto
+  commit: 
+
+# dependencies for testing.
+- hjsonpointer-1.5.0
+- hjsonschema-1.10.0
+- string-interpolate-0.3.0.2
+- hspec-golden-0.1.0.3
+- pretty-simple-4.0.0.0
+- prettyprinter-1.7.0
+- prettyprinter-ansi-terminal-1.1.2
+
+allow-newer: true
+
+flags:
+  # Using RDRAND instead of /dev/urandom as an entropy source for key
+  # generation is dubious. Set the flag so we use /dev/urandom by default.
+  cryptonite:
+    support_rdrand: false
+
+nix:
+  shell-file: nix/stack-shell.nix

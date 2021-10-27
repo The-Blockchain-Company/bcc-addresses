@@ -1,0 +1,27 @@
+///#TODO add hashes 
+{
+    "haskell.nix": {
+        "branch": "master",
+        "description": "Alternative Haskell Infrastructure for Nixpkgs",
+        "homepage": "https://The-Blockchain-Company.github.io/haskell.nix",
+        "owner": "The-Blockchain-Company",
+        "repo": "haskell.nix",
+        "rev": "",
+        "sha256": "",
+        "type": "tarball",
+        "url": "https://github.com/The-Blockchain-Company/haskell.nix/",
+        "url_template": "https://github.com/<owner>/<repo>/archive/<rev>.tar.gz"
+    },
+    "bcccoin-nix": {
+        "branch": "master",
+        "description": "nix scripts shared across projects",
+        "homepage": null,
+        "owner": "The-Blockchain-Company",
+        "repo": "bcccoin-nix",
+        "rev": "",
+        "sha256": "",
+        "type": "tarball",
+        "url": "https://github.com/The-Blockchain-Company/bcccoin-nix/archive",
+        "url_template": "https://github.com/<owner>/<repo>/archive/<rev>.tar.gz"
+    }
+}

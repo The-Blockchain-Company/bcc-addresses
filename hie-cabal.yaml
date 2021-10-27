@@ -1,0 +1,12 @@
+cradle:
+  cabal:
+    # core package
+    - path: "./core/lib"
+      component: "bcc-addresses:library:bcc-addresses"
+    - path: "./core/test"
+      component: "bcc-addresses:test:unit"
+    # cli package
+    - path: "./command-line/lib"
+      component: "bcc-addresses-cli:library:bcc-addresses-cli"
+    - path: "./command-line/test"
+      component: "bcc-addresses-cli:test:unit"
