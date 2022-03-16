@@ -165,7 +165,7 @@ N/A
 
 - `Bcc.Address.Errors` module. Errors data-types have been moved to their respective module `Bcc.Address.Styles.{Cole,Icarus,Sophie}`
 
-- Anything related to Jester in both the library and the command-line.
+- Anything related to Quibitous in both the library and the command-line.
 
 ## [2.1.0] - 2020-09-29
 
@@ -190,7 +190,7 @@ N/A
 
 - Command-line interface `bcc-address` for managing recovery-phrases, keys and addresses.
 - Support for Sophie-specific address types.
-- Support for Jester-specific address types.
+- Support for Quibitous-specific address types.
 
 ### Changed
 
