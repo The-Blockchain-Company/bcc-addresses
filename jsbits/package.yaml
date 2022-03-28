@@ -3,7 +3,7 @@ version:             3.6.0
 github:              The-Blockchain-Company/bcc-addresses
 license:             Apache-2.0
 author:              The-Blockchain-Company
-maintainer:          operations@bcccoin.io
+maintainer:          operations@blockchain-company.io
 copyright:           2021 The-Blockchain-Company
 synopsis:            Javascript code for ghcjs build of bcc-addresses.
 category:            Bcc

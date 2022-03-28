@@ -3,7 +3,7 @@ version:             3.5.0
 github:              The-Blockchain-Company/bcc-addresses
 license:             Apache-2.0
 author:              The-Blockchain-Company
-maintainer:          operations@bcccoin.io
+maintainer:          operations@blockchain-company.io
 copyright:           2021 The-Blockchain-Company
 synopsis:            Library utilities for mnemonic generation and address derivation.
 category:            Bcc

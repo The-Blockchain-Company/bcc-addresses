@@ -17,7 +17,7 @@ category:       Bcc
 homepage:       https://github.com/The-Blockchain-Company/bcc-addresses#readme
 bug-reports:    https://github.com/The-Blockchain-Company/bcc-addresses/issues
 author:         BCCCOIN
-maintainer:     operations@bcccoin.io
+maintainer:     operations@blockchain-company.io
 copyright:      2021 BCCCOIN
 license:        Apache-2.0
 build-type:     Simple

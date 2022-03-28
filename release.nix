@@ -36,7 +36,7 @@
 
 }:
 
-with (import pkgs.bcccoinNix.release-lib) {
+with (import pkgs.tbcoNix.release-lib) {
   inherit pkgs;
   inherit supportedSystems supportedCrossSystems scrubJobs projectArgs;
   packageSet = import bcc-addresses;

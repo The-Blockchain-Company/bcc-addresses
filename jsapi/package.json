@@ -34,7 +34,7 @@
     "arrowParens": "avoid"
   },
   "name": "bcc-addresses",
-  "author": "The-Blockchain-Company <adrestia@bcccoin.io>",
+  "author": "The-Blockchain-Company <rmourey_jr@blockchain-company.io>",
   "repository": {
     "type": "git",
     "url": "https://github.com/The-Blockchain-Company/bcc-addresses.git",

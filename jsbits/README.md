@@ -27,15 +27,15 @@ Build and run CLI:
 
 ```terminal
 $ nix-shell
-[nix-shell:~/bcccoin/bcc-addresses]$ js-unknown-ghcjs-cabal --builddir=dist-ghcjs build all
+[nix-shell:~/tbco/bcc-addresses]$ js-unknown-ghcjs-cabal --builddir=dist-ghcjs build all
 ...
 
-[nix-shell:~/bcccoin/bcc-addresses]$ js-unknown-ghcjs-cabal --builddir=dist-ghcjs run bcc-addresses-cli:exe:bcc-address
+[nix-shell:~/tbco/bcc-addresses]$ js-unknown-ghcjs-cabal --builddir=dist-ghcjs run bcc-addresses-cli:exe:bcc-address
 ...
-/home/rodney/bcccoin/bcc-addresses/dist-ghcjs/build/wasm32-none/ghcjs-8.6.5/bcc-addresses-cli-3.3.0/x/bcc-address/build/bcc-address/bcc-address: createProcess: runInteractiveProcess: exec: does not exist (No such file or directory)
+/home/rodney/tbco/bcc-addresses/dist-ghcjs/build/wasm32-none/ghcjs-8.6.5/bcc-addresses-cli-3.3.0/x/bcc-address/build/bcc-address/bcc-address: createProcess: runInteractiveProcess: exec: does not exist (No such file or directory)
 bcc-address: createProcess: runInteractiveProcess: exec: does not exist (No such file or directory)
 
-[nix-shell:~/bcccoin/bcc-addresses]$ node dist-ghcjs/build/wasm32-none/ghcjs-8.6.5/bcc-addresses-cli-3.3.0/x/bcc-address/build/bcc-address/bcc-address.jsexe/all.js recovery-phrase generate
+[nix-shell:~/tbco/bcc-addresses]$ node dist-ghcjs/build/wasm32-none/ghcjs-8.6.5/bcc-addresses-cli-3.3.0/x/bcc-address/build/bcc-address/bcc-address.jsexe/all.js recovery-phrase generate
 culture fringe exercise stumble gold current balance ....
 ```
 

@@ -43,9 +43,9 @@ Start a `nix-shell` in *this directory* (not the top-level) and run:
 ```shell
 $ cd jsapi
 $ nix-shell
-[nix-shell:~/bcccoin/bcc-addresses/jsapi]$ npm install && npm run build
+[nix-shell:~/tbco/bcc-addresses/jsapi]$ npm install && npm run build
 ...
-[nix-shell:~/bcccoin/bcc-addresses/jsapi]$ npm run test
+[nix-shell:~/tbco/bcc-addresses/jsapi]$ npm run test
 ```
 
 Behind the scenes, this will use Nix to make the `ghcjs` build of the `bcc-addresses` library. The path to this Javascript file is stored in the `$BCC_ADDRESSES_JS` environment variable.
@@ -56,8 +56,8 @@ To try it out run `nix-shell` from the repo top-level directory:
 
 ```shell
 $ nix-shell
-[nix-shell:~/bcccoin/bcc-addresses]$ js-unknown-ghcjs-cabal build bcc-addresses-jsapi:jsapi-test
-[nix-shell:~/bcccoin/bcc-addresses]$ node dist-newstyle/build/js-ghcjs/ghcjs-8.10.4/bcc-addresses-jsapi-3.5.0/t/jsapi-test/build/jsapi-test/jsapi-test.jsexe/all.js
+[nix-shell:~/tbco/bcc-addresses]$ js-unknown-ghcjs-cabal build bcc-addresses-jsapi:jsapi-test
+[nix-shell:~/tbco/bcc-addresses]$ node dist-newstyle/build/js-ghcjs/ghcjs-8.10.4/bcc-addresses-jsapi-3.5.0/t/jsapi-test/build/jsapi-test/jsapi-test.jsexe/all.js
 ```
 
 That test initializes the api from a JS function that is called from `Main.hs`. To build `.js` file that might be easier to use from a JS app run:
