@@ -6,7 +6,7 @@
 
 -- | List common bech32 prefixes used for objects in the Bcc eco-systems.
 --
--- As specified in [CIP-5](https://github.com/bcc-foundation/CIPs/tree/master/CIP5)
+-- As specified in [CIP-5](https://github.com/the-blockchain-company/CIPs/tree/master/CIP5)
 module Bcc.Codec.Bech32.Prefixes
     ( -- * Addresses
       addr
