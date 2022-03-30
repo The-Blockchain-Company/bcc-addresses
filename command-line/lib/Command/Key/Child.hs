@@ -113,8 +113,8 @@ run Child{path} = do
     -- root_xsk => acct_xsk: (hard derivation from root to address)
     --     m => m / purpose' / coin_type' / account' / role / index
     --
-    -- purpose' = 1852H for shelley wallet addresses.
-    -- purpose' = 1854H for shelley wallet addresses that expose shared account.
+    -- purpose' = 1852H for sophie wallet addresses.
+    -- purpose' = 1854H for sophie wallet addresses that expose shared account.
     --
     -- acct_xsk => addr_xsk: (hard derivation from account to address)
     --     m / purpose' / coin_type' / account' => m / purpose' / coin_type' / account' / role / index
